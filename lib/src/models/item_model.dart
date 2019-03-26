@@ -12,4 +12,6 @@ class ItemModel {
   final int score;
   final String title;
   final int descendants;
+
+  
 }
