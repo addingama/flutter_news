@@ -11,6 +11,7 @@ class NewsApiProvider {
     final response = await client.get('$_root/topstories.json');
 
     final ids = json.decode(response.body);
+    return ids;
   }
 
   fetchItem(int id) async {
