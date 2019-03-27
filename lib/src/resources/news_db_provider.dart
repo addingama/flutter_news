@@ -17,7 +17,7 @@ class NewsDbProvider {
       path,
       version: 1,
       onCreate: (Database newDb, int version) {
-        // initial table creation
+        // initial table creation, multiline string use triple quote
         newDb.execute("""
           CREATE TABLE Items
             (
@@ -49,7 +49,7 @@ class NewsDbProvider {
     );
 
     if (maps.length > 0) {
-      return maps;
+      return ItemModel.fromDb(maps.first);
     } 
 
     return null;

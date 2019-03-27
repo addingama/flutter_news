@@ -18,6 +18,6 @@ class NewsApiProvider {
     final response = await client.get('$_root/item/$id.json');
     final parsedJson = json.decode(response.body);
 
-    return ItemModel.fromjson(parsedJson);
+    return ItemModel.fromJson(parsedJson);
   }
 }
