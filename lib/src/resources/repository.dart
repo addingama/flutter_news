@@ -34,5 +34,5 @@ abstract class Source {
 }
 
 abstract class Cache {
-  void addItem(ItemModel item);
+  Future<int> addItem(ItemModel item);
 }
