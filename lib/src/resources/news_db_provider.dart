@@ -12,7 +12,7 @@ class NewsDbProvider {
     // get directory reference on the device
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     // get reference for the db file
-    final path =join(documentsDirectory.path, "items.db");
+    final path = join(documentsDirectory.path, "items.db");
     db = await openDatabase(
       path,
       version: 1,
@@ -36,7 +36,22 @@ class NewsDbProvider {
               descendants INTEGER 
             )
         """);
-      }
+      },
     );
+  }
+
+  fetchItem(int id) async {
+    final maps = await db.query(
+      'Items',
+      columns: null, // like select : ['title', 'other field']
+      where: 'id = ?',
+      whereArgs: [id],
+    );
+
+    if (maps.length > 0) {
+      return maps;
+    } 
+
+    return null;
   }
 }
