@@ -4,8 +4,9 @@ import 'dart:io';
 import 'package:path/path.dart';
 import 'dart:async';
 import '../models/item_model.dart';
+import 'repository.dart';
 
-class NewsDbProvider {
+class NewsDbProvider implements Source, Cache {
   Database db;
 
   void init() async {
@@ -38,6 +39,11 @@ class NewsDbProvider {
         """);
       },
     );
+  }
+
+  // Todo - store and fetch top ids
+  Future<List<int>> fetchTopIds () {
+    return null;
   }
 
   Future<ItemModel> fetchItem(int id) async {
