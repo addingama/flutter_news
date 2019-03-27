@@ -9,6 +9,11 @@ import 'repository.dart';
 class NewsDbProvider implements Source, Cache {
   Database db;
 
+  // initiate the database
+  NewsDbProvider()  {
+    init();
+  }
+
   void init() async {
     // get directory reference on the device
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
@@ -42,7 +47,7 @@ class NewsDbProvider implements Source, Cache {
   }
 
   // Todo - store and fetch top ids
-  Future<List<int>> fetchTopIds () {
+  Future<List<int>> fetchTopIds() {
     return null;
   }
 
@@ -56,12 +61,14 @@ class NewsDbProvider implements Source, Cache {
 
     if (maps.length > 0) {
       return ItemModel.fromDb(maps.first);
-    } 
+    }
 
     return null;
   }
 
   Future<int> addItem(ItemModel item) {
-    return db.insert('Items', item.toMapForDb()); 
+    return db.insert('Items', item.toMapForDb());
   }
 }
+
+final newsDbProvider = NewsDbProvider(); // to create singleton because sqlite not like if we open more than 1 same db
