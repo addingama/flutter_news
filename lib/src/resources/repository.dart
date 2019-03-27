@@ -16,7 +16,8 @@ class Repository {
   ];
 
   Future<List<int>> fetchTopIds() async {
-    return apiProvider.fetchTopIds();
+    // cheating
+    return sources[1].fetchTopIds();
   }
 
   Future<ItemModel> fetchItem(int id) async {
