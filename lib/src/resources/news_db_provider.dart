@@ -18,7 +18,7 @@ class NewsDbProvider implements Source, Cache {
     // get directory reference on the device
     Directory documentsDirectory = await getApplicationDocumentsDirectory();
     // get reference for the db file
-    final path = join(documentsDirectory.path, "items.db");
+    final path = join(documentsDirectory.path, "items2.db");
     db = await openDatabase(
       path,
       version: 1,
