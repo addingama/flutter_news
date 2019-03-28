@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/item_model.dart';
 import '../blocs/stories_provider.dart';
 
-
 class NewsListTile extends StatelessWidget {
   final int itemId;
 
@@ -19,6 +18,17 @@ class NewsListTile extends StatelessWidget {
         if (!snapshot.hasData) {
           return Text('Stream still loading');
         }
+
+        return FutureBuilder(
+          future: snapshot.data[itemId],
+          builder: (context, AsyncSnapshot<ItemModel> itemSnapshot) {
+            if (!itemSnapshot.hasData) {
+              return Text('Still loading item $itemId');
+            }
+
+            return Text(itemSnapshot.data.title);
+          },
+        );
       },
     );
   }
