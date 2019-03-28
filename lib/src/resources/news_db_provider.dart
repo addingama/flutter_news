@@ -10,7 +10,7 @@ class NewsDbProvider implements Source, Cache {
   Database db;
 
   // initiate the database
-  NewsDbProvider()  {
+  NewsDbProvider() {
     init();
   }
 
@@ -67,8 +67,13 @@ class NewsDbProvider implements Source, Cache {
   }
 
   Future<int> addItem(ItemModel item) {
-    return db.insert('Items', item.toMapForDb());
+    return db.insert(
+      'Items',
+      item.toMapForDb(),
+      conflictAlgorithm: ConflictAlgorithm.replace,
+    );
   }
 }
 
-final newsDbProvider = NewsDbProvider(); // to create singleton because sqlite not like if we open more than 1 same db
+final newsDbProvider =
+    NewsDbProvider(); // to create singleton because sqlite not like if we open more than 1 same db
