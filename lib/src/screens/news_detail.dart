@@ -4,6 +4,11 @@ class NewsDetail extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
-    return Text('I am a news detail');
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Detail'),
+      ),
+      body: Text('I am detail text'),
+    );
   }
 }
